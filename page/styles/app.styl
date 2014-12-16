@@ -1,0 +1,29 @@
+@require 'nib'
+@require 'bootstrap/_variables'
+
+.full-height
+	@media screen and (min-width: screen-md-min)
+		height 100%
+
+body
+html
+	@media screen and (min-width: screen-md-min)
+		overflow hidden
+	@extend .full-height
+
+.flex
+	display flex
+	@extend .full-height
+
+	.panel
+		flex 1 1
+		flex-direction column
+		display flex
+		overflow hidden
+
+		&-heading
+			flex-grow 0
+			flex-shrink 0
+
+		&-body
+			flex 1
