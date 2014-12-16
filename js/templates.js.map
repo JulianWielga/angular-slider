@@ -1,1 +1,1 @@
-{"version":3,"sources":["page/templates/test.jade"],"names":[],"mappings":"AAAA;AACA","file":"js/templates.js","sourcesContent":["\n  $templateCache.put('/templates/test.html', '\\n<div class=\"container-fluid\">\\n  <h1>Documentation</h1>\\n</div>');"]}
+{"version":3,"sources":["page/templates/test.jade"],"names":["$templateCache","put"],"mappings":"AACAA,eAAAC,IAAA,uBAAA","file":"js/templates.js.map","sourcesContent":[".container-fluid\n\th1 Documentation"]}
