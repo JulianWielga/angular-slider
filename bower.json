@@ -13,7 +13,8 @@
     "angular-mocks": ">= 1.2 < 1.3",
     "angular-bootstrap": "angular-bootstrap-jbruni#~0.11.0",
     "angular-ui-utils": ">= 0.1.1 < 0.1.2",
-    "angular-underscore": "*"
+    "angular-underscore": "*",
+    "touk-angular-slider": "~0.3.3"
   },
   "overrides": {
     "bootstrap": {
@@ -24,5 +25,8 @@
     "angular-mocks": {
       "main": "README.md"
     }
+  },
+  "resolutions": {
+    "angular": ">= 1.2 < 1.4"
   }
 }

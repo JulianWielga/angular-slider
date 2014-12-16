@@ -11,6 +11,7 @@ angular.module 'app', [
 	# angular external dependencies
 	'angular-underscore'
 	'ui.bootstrap'
+	'touk.slider'
 
 	# app modules
 

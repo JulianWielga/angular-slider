@@ -1,29 +1,55 @@
 @require 'nib'
 @require 'bootstrap/_variables'
 
-.full-height
-	@media screen and (min-width: screen-md-min)
-		height 100%
+slider
+	display block
+	position relative
+	height 30px
+	width 500px
+	span
+		&.bar
+			height 50%
+			z-index 0
+			background #eee
+			left 0
+			top 25%
+			cursor pointer
+			&.selection
+				background #0a0
+				opacity 0.5
+			&.unselected
+				width auto
+				background #a00
+				opacity 0.5
+		&.pointer
+			cursor pointer
+			width 15px
+			top 0
+			bottom 0
+			background-color #00a
+			/*&:hover*/
+			/*&.active*/
 
-body
-html
-	@media screen and (min-width: screen-md-min)
-		overflow hidden
-	@extend .full-height
+		&.bubble
+			font-size 0.7em
+			line-height 1.4em
+			font-family sans-serif
+			text-align center
+			text-shadow none
+			top -1.3em
+			cursor pointer
+			&.selection
+			&.limit
+				top 25%
 
-.flex
-	display flex
-	@extend .full-height
+::-ms-tooltip
+	display none
 
-	.panel
-		flex 1 1
-		flex-direction column
-		display flex
-		overflow hidden
+#slider-container
+	-webkit-touch-callout none
+	-webkit-user-select none
+	-khtml-user-select none
+	-moz-user-select -moz-none
+	-ms-user-select none
+	user-select none
 
-		&-heading
-			flex-grow 0
-			flex-shrink 0
-
-		&-body
-			flex 1
