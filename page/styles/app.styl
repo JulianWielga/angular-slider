@@ -4,52 +4,47 @@
 slider
 	display block
 	position relative
-	height 30px
-	width 500px
-	span
-		&.bar
-			height 50%
-			z-index 0
-			background #eee
-			left 0
-			top 25%
-			cursor pointer
-			&.selection
-				background #0a0
-				opacity 0.5
-			&.unselected
-				width auto
-				background #a00
-				opacity 0.5
-		&.pointer
-			cursor pointer
-			width 15px
-			top 0
-			bottom 0
-			background-color #00a
-			/*&:hover*/
-			/*&.active*/
+	height input-height-base
 
-		&.bubble
-			font-size 0.7em
-			line-height 1.4em
-			font-family sans-serif
-			text-align center
-			text-shadow none
-			top -1.3em
-			cursor pointer
-			&.selection
-			&.limit
-				top 25%
+	.bar
+		height 50%
+		top 25%
+		left 0
+		z-index 0
+		background gray-lighter
+		border-radius border-radius-base
+		cursor pointer
 
-::-ms-tooltip
-	display none
+		&.selection
+			background brand-info
 
-#slider-container
-	-webkit-touch-callout none
-	-webkit-user-select none
-	-khtml-user-select none
-	-moz-user-select -moz-none
-	-ms-user-select none
-	user-select none
+		&.unselected
+			background brand-info
+
+	&[ng-model-range] .bar
+		&.unselected
+			background gray-lighter
+
+	.pointer
+		cursor pointer
+		width (input-height-base / 1)
+		border-radius border-radius-base
+		top 0
+		bottom 0
+		background-color brand-primary
+
+		&:hover
+		&.active
+			background-color brand-danger
+
+	.bubble
+		font-size (font-size-base * .75)
+		line-height input-height-base
+		text-align center
+		text-shadow none
+		top -75%
+
+		&.selection
+		&.limit
+			top 50%
 

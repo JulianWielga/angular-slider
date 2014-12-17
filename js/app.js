@@ -1,8 +1,3 @@
-'use strict';
-angular.module('app', ['ngCookies', 'ngAnimate', 'ngResource', 'ngSanitize', 'ngRoute', 'angular-underscore', 'ui.bootstrap', 'touk.slider', 'app.templates']).config([
-  '$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-    return $locationProvider.html5Mode(false);
-  }
-]);
-;
+"use strict";angular.module("app",["ngCookies","ngAnimate","ngResource","ngSanitize","ngRoute","angular-underscore","ui.bootstrap","touk.slider","app.main","app.templates"]).config(["$routeProvider","$locationProvider",function(t,e){return e.html5Mode(!1)}]);var MainCtrl,__bind=function(t,e){return function(){return t.apply(e,arguments)}};angular.module("app.main",[]).controller("MainCtrl",["$scope",MainCtrl=function(){function t(t){this.scope=t,this.fireResizeEvent=__bind(this.fireResizeEvent,this),this.translateRange=__bind(this.translateRange,this),this.translateCombined=__bind(this.translateCombined,this),this.addScope=__bind(this.addScope,this),this.scopes=[],this.value=5,this.values={low:5,high:7}}return t.prototype.scale=function(t){return Math.pow(t,3)},t.prototype.inverseScale=function(t){var e;return e=0===t?1:t/Math.abs(t),e*Math.pow(Math.abs(t),1/3)},t.prototype.addScope=function(){return this.scopes.push({values:{low:4,high:7},value:5})},t.prototype.translate=function(t){return"$"+t},t.prototype.translateCombined=function(t,e){return this.translate(t.toFixed(this.precision))+" *** "+this.translate(e.toFixed(this.precision))},t.prototype.translateRange=function(t,e){return this.translate((e-t).toFixed(this.precision))},t.prototype.fireResizeEvent=function(){return this.scope.$broadcast("refreshSlider")},t}()]);
+//# sourceMappingURL=js/app.js.map
 //# sourceMappingURL=app.js.map

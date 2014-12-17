@@ -14,6 +14,7 @@ angular.module 'app', [
 	'touk.slider'
 
 	# app modules
+	'app.main'
 
 	# jade / html templates and templates
 	'app.templates'

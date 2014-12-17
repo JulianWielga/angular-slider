@@ -1,7 +1,116 @@
-.container-fluid
-	h1 Documentation
-	slider(
-		ng-model='aaa'
-		floor='0'
-		ceiling='100'
-	)
+mixin text(model)
+	input.form-control(type="text", ng-model=model)&attributes(attributes)
+
+mixin colWithLabel(label)
+	.col-xs-4: .form-group
+		label= label
+		block
+
+.container-fluid(ng-controller="MainCtrl as ctrl")
+	h1 touk-angular-slider
+	hr
+
+	h3 Params
+	hr
+	.row
+		+colWithLabel('Floor')
+			+text("ctrl.floor")(ng-init="ctrl.floor = 1")
+		+colWithLabel('Ceiling')
+			+text("ctrl.ceiling")(ng-init="ctrl.ceiling = 10")
+		+colWithLabel('Step width')
+			+text("ctrl.step")(ng-init="ctrl.step = 0.01")
+		+colWithLabel('Precision')
+			+text("ctrl.precision")(ng-init="ctrl.precision = 2")
+		+colWithLabel('Buffer')
+			+text("ctrl.buffer")(ng-init="ctrl.buffer = 2")
+		+colWithLabel('Stickiness')
+			+text("ctrl.stickiness")(ng-init="ctrl.stickiness = 3")
+		+colWithLabel('Slider Widths')
+			+text("ctrl.sliderWidth")(ng-init="ctrl.sliderWidth = '100%'", ng-change="ctrl.fireResizeEvent()")
+
+	h3 Single knob
+	hr
+	.row
+		+colWithLabel('Value')
+			+text("ctrl.value")
+		.col-xs-8: .form-group
+			label Slider
+			slider(
+				floor="{{ ctrl.floor }}"
+				ceiling="{{ ctrl.ceiling }}"
+				step="{{ ctrl.step }}"
+				precision="{{ ctrl.precision }}"
+				stickiness="{{ ctrl.stickiness }}"
+				ng-model="ctrl.value"
+				style="width: {{ ctrl.sliderWidth }};"
+				)
+
+	h3 Dual knob
+	hr
+	.row
+		+colWithLabel('Values'): .row
+			.col-xs-6: +text("ctrl.values.low")
+			.col-xs-6: +text("ctrl.values.high")
+		.col-xs-8: .form-group
+			label Slider
+			slider(
+				floor="{{ ctrl.floor }}"
+				ceiling="{{ ctrl.ceiling }}"
+				step="{{ ctrl.step }}"
+				precision="{{ ctrl.precision }}"
+				buffer="{{ ctrl.buffer }}"
+				stickiness="{{ ctrl.stickiness }}"
+				ng-model="ctrl.values.low"
+				ng-model-range="ctrl.values.high"
+				translate-fn="ctrl.translate"
+				translate-range-fn="ctrl.translateRange"
+				translate-combined-fn="ctrl.translateCombined"
+				style="width: {{ ctrl.sliderWidth }};"
+				)
+
+	h3 Scaling functions (y=x^3)
+	hr
+	.row
+		.col-md-6
+			label Single knob
+			slider(
+				floor="{{ ctrl.floor }}"
+				ceiling="{{ ctrl.ceiling }}"
+				step="{{ ctrl.step }}"
+				precision="{{ ctrl.precision }}"
+				stickiness="{{ ctrl.stickiness }}"
+				scale-fn="ctrl.scale"
+				inverse-scale-fn="ctrl.inverseScale"
+				ng-model="ctrl.value"
+				translate-fn="ctrl.translate"
+				)
+		.col-md-6
+			label Dual knob
+			slider(
+				floor="{{ ctrl.floor }}"
+				ceiling="{{ ctrl.ceiling }}"
+				step="{{ ctrl.step }}"
+				precision="{{ ctrl.precision }}"
+				stickiness="{{ ctrl.stickiness }}"
+				scale-fn="ctrl.scale"
+				inverse-scale-fn="ctrl.inverseScale"
+				buffer="{{ ctrl.buffer }}"
+				ng-model="ctrl.values.low"
+				ng-model-range="ctrl.values.high"
+				translate-fn="ctrl.translate"
+				)
+
+	h3 ngRepeat
+		button.btn.btn-default(type="button", ng-click="ctrl.addScope()") Add slider
+	hr
+	.row: .col-md-6(ng-repeat="scope in ctrl.scopes")
+		label Slider {{$index+1}}
+		slider(
+			floor="{{ ctrl.floor }}"
+			ceiling="{{ ctrl.ceiling }}"
+			step="{{ ctrl.step }}"
+			precision="{{ ctrl.precision }}"
+			stickiness="{{ ctrl.stickiness }}"
+			ng-model="ctrl.value"
+			)
+
